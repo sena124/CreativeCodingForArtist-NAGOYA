@@ -1,5 +1,9 @@
 #include "ofApp.h"
 
+
+
+//s1とs2で特定の値がどちらが大きいかの判定
+//of_v0.8.4_osx_release/libs/openFrameworks/types/ofColor.cppに実装が書かれている
 bool compareName( const colorNameMapping& s1, const colorNameMapping& s2 ) {
     return strcasecmp( s1.name.c_str(), s2.name.c_str() ) <= 0;
 }
@@ -20,6 +24,7 @@ bool compareSaturation( const colorNameMapping& s1, const colorNameMapping& s2 )
 void ofApp::setup(){
     
     // build a map from name to ofColor of all the named OF colors;
+    //openFreamWorksで使える色一覧
 
     colorNameMap["white"] = ofColor::white;
     colorNameMap["gray"] = ofColor::gray;
@@ -244,21 +249,25 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     
+    //名前順の並べ替え
     if (key == '1'){
         if (sortedType != 1){
             sortedType = 1;
             ofSort(colorNames, compareName);
         }
+    //輝度順の並び替え
     } else if (key == '2'){
         if (sortedType != 2){
             sortedType = 2;
             ofSort(colorNames, compareHue);
         }
+    //明度順の並べ替え
     } else if (key == '3'){
         if (sortedType != 3){
             sortedType = 3;
             ofSort(colorNames, compareBrightness);
         }
+    //混合度順の並べ替え
     } else if (key == '4'){
         if (sortedType != 4){
             sortedType = 4;
