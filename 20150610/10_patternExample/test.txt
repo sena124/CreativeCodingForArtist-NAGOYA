@@ -1,0 +1,2 @@
+このコードはKezzardrixさんの公開しているサンプルを元に作成しています。
+http://www.ameet.jp/digital-imaging/digital-imaging_20130831/
