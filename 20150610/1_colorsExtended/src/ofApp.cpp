@@ -25,7 +25,7 @@ void ofApp::setup(){
     
     // build a map from name to ofColor of all the named OF colors;
     //openFreamWorksで使える色一覧
-
+    
     colorNameMap["white"] = ofColor::white;
     colorNameMap["gray"] = ofColor::gray;
     colorNameMap["black"] = ofColor::black;
@@ -173,7 +173,7 @@ void ofApp::setup(){
     colorNameMap["wheat"] = ofColor::wheat;
     colorNameMap["whiteSmoke"] = ofColor::whiteSmoke;
     colorNameMap["yellowGreen"] = ofColor::yellowGreen;
-
+    
     // this map is useful if we want to address the colors by string.
     // since we might want to sort this, we can put them in a vector also
     
@@ -186,11 +186,11 @@ void ofApp::setup(){
         mapping.name = mapEntry->first;
         mapping.color = mapEntry->second;
         colorNames.push_back(mapping);
-    
+        
     }
     
     ofBackground(255);
-
+    
     ofSetVerticalSync(true);
     
     ofEnableAlphaBlending();
@@ -204,9 +204,9 @@ void ofApp::setup(){
 void ofApp::update(){
     
     // smoothing the mouse a bit over time
-
+    
     mouseSmoothed = 0.95 * mouseSmoothed + 0.05 * ofPoint(mouseX, mouseY);
-
+    
 }
 
 //--------------------------------------------------------------
@@ -216,17 +216,17 @@ void ofApp::draw(){
     
     float totalSize = (ceil(colorNameMap.size()/3.0)) * 50 - ofGetHeight() + 60;
     
-    // map the smoothed mouse to this: 
+    // map the smoothed mouse to this:
     
     float offset = ofMap(mouseSmoothed.y, 0, ofGetHeight(), 0, totalSize, true);
     
     // draw all the colors
     // note this could be optimized, since we're drawing plenty that's offscreen here.
     
-  
+    
     
     for (unsigned int i = 0; i < colorNames.size(); i++){
-    
+        
         int x = (i % 3) * ofGetWidth()/3.0;
         int y = (floor(i / 3)) * 50;
         
@@ -236,7 +236,7 @@ void ofApp::draw(){
         ofDrawBitmapStringHighlight(colorNames[i].name, 20 + x, y -offset+30, ofColor::white, ofColor::black);
         
     }
-
+    
     
     
     ofSetColor(0);
@@ -255,19 +255,19 @@ void ofApp::keyPressed(int key){
             sortedType = 1;
             ofSort(colorNames, compareName);
         }
-    //輝度順の並び替え
+        //輝度順の並び替え
     } else if (key == '2'){
         if (sortedType != 2){
             sortedType = 2;
             ofSort(colorNames, compareHue);
         }
-    //明度順の並べ替え
+        //明度順の並べ替え
     } else if (key == '3'){
         if (sortedType != 3){
             sortedType = 3;
             ofSort(colorNames, compareBrightness);
         }
-    //混合度順の並べ替え
+        //混合度順の並べ替え
     } else if (key == '4'){
         if (sortedType != 4){
             sortedType = 4;
@@ -278,40 +278,40 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+    
 }
